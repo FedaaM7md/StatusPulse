@@ -1,0 +1,358 @@
+/*
+ * StatusPulse design tokens and primitives.
+ * Copyright (c) 2026 Fedaa Mohamed. All rights reserved.
+ *
+ * Dark NOC console for admin, calm light surface for public status.
+ * Fonts: Readex Pro (UI) and JetBrains Mono (metrics) — both OFL-1.1,
+ * self-hosted in /fonts with their license files.
+ */
+
+@font-face {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/readex-pro-arabic.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF,
+    U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+
+@font-face {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/readex-pro-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Readex Pro';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/readex-pro-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --c-bg: 11 15 20;
+    --c-panel: 18 24 33;
+    --c-panel2: 24 32 43;
+    --c-line: 38 49 62;
+    --c-line-strong: 58 74 92;
+    --c-ink: 215 224 234;
+    --c-muted: 138 153 173;
+    --c-faint: 122 139 158;
+    --c-accent: 76 201 240;
+    --c-accent-ink: 6 24 33;
+    --c-up: 61 220 132;
+    --c-degraded: 245 184 61;
+    --c-down: 255 90 95;
+    --c-maint: 120 178 255;
+  }
+
+  html[data-theme='light'] {
+    color-scheme: light;
+    --c-bg: 242 245 248;
+    --c-panel: 255 255 255;
+    --c-panel2: 247 249 251;
+    --c-line: 219 226 233;
+    --c-line-strong: 190 202 214;
+    --c-ink: 22 32 44;
+    --c-muted: 88 105 122;
+    --c-faint: 102 119 136;
+    --c-accent: 8 126 158;
+    --c-accent-ink: 255 255 255;
+    --c-up: 20 130 64;
+    --c-degraded: 148 98 0;
+    --c-down: 182 42 47;
+    --c-maint: 30 82 200;
+  }
+
+  /* Login is always a dark operations console, independent of admin theme. */
+  .console-shell {
+    color-scheme: dark;
+    --c-bg: 11 15 20;
+    --c-panel: 18 24 33;
+    --c-panel2: 24 32 43;
+    --c-line: 38 49 62;
+    --c-line-strong: 58 74 92;
+    --c-ink: 215 224 234;
+    --c-muted: 138 153 173;
+    --c-faint: 122 139 158;
+    --c-accent: 76 201 240;
+    --c-accent-ink: 6 24 33;
+    --c-up: 61 220 132;
+    --c-degraded: 245 184 61;
+    --c-down: 255 90 95;
+    --c-maint: 120 178 255;
+  }
+
+  /* Public status page: light, quiet, document-like. */
+  .public-shell {
+    color-scheme: light;
+    --c-bg: 246 248 250;
+    --c-panel: 255 255 255;
+    --c-panel2: 250 252 254;
+    --c-line: 226 232 239;
+    --c-line-strong: 198 209 220;
+    --c-ink: 20 28 38;
+    --c-muted: 92 106 122;
+    --c-faint: 101 115 130;
+    --c-accent: 8 126 158;
+    --c-accent-ink: 255 255 255;
+    --c-up: 20 130 64;
+    --c-degraded: 148 98 0;
+    --c-down: 182 42 47;
+    --c-maint: 30 82 200;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: rgb(var(--c-line-strong)) transparent;
+  }
+
+  body {
+    @apply bg-bg text-ink antialiased;
+    font-feature-settings: 'kern';
+    font-optical-sizing: auto;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-accent));
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgb(var(--c-accent) / 0.28);
+    color: rgb(var(--c-ink));
+  }
+
+  [dir='rtl'] .mono,
+  .mono {
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, rgb(var(--c-line) / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--c-line) / 0.55) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+  }
+
+  .scan-line {
+    background: linear-gradient(90deg, transparent, rgb(var(--c-accent) / 0.5), transparent);
+  }
+}
+
+@layer components {
+  .panel {
+    @apply border border-line bg-panel;
+  }
+
+  .panel-head {
+    @apply flex items-center justify-between gap-3 border-b border-line bg-panel2 px-4 py-2.5;
+  }
+
+  .eyebrow {
+    @apply text-2xs font-semibold text-faint;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .eyebrow-code {
+    @apply font-mono text-2xs font-medium uppercase tracking-[0.14em] text-faint;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 border px-3 py-2 text-sm font-medium transition
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn border-accent bg-accent text-accent-ink hover:bg-accent/90;
+  }
+
+  .btn-secondary {
+    @apply btn border-line bg-panel text-ink hover:border-line-strong hover:bg-panel2;
+  }
+
+  .btn-ghost {
+    @apply btn border-transparent bg-transparent text-muted hover:bg-panel2 hover:text-ink;
+  }
+
+  .btn-danger {
+    @apply btn border-down/60 bg-down/10 text-down hover:bg-down/20;
+  }
+
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  .input,
+  .select,
+  .textarea {
+    @apply w-full border border-line bg-panel2 px-3 py-2 text-sm text-ink placeholder:text-faint
+      focus:border-accent focus:bg-panel focus:outline-none focus:ring-2 focus:ring-accent/20;
+  }
+
+  .textarea {
+    @apply min-h-[104px] resize-y;
+  }
+
+  .select {
+    @apply appearance-none bg-[length:14px] bg-[position:right_10px_center] bg-no-repeat pe-8;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%238a99ad' stroke-width='1.6'%3E%3Cpath d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+  }
+
+  html[dir='rtl'] .select {
+    background-position: left 10px center;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-muted;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .help {
+    @apply mt-1.5 text-xs leading-relaxed text-muted;
+  }
+
+  .field-error {
+    @apply mt-1.5 flex items-start gap-1 text-xs font-medium text-down;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 border px-2 py-0.5 text-[11px] font-medium;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .chip-up {
+    @apply border-up/35 bg-up/10 text-up;
+  }
+
+  .chip-degraded {
+    @apply border-degraded/40 bg-degraded/10 text-degraded;
+  }
+
+  .chip-down {
+    @apply border-down/40 bg-down/10 text-down;
+  }
+
+  .chip-maint {
+    @apply border-maint/35 bg-maint/10 text-maint;
+  }
+
+  .chip-unknown {
+    @apply border-line bg-panel2 text-muted;
+  }
+
+  .table-head {
+    @apply border-y border-line bg-panel2 text-2xs font-medium text-faint;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .table-cell {
+    @apply border-b border-line/70 px-3 py-2.5 align-middle text-sm;
+  }
+
+  .rail-link {
+    @apply flex items-center gap-2.5 border-s-2 border-transparent px-3 py-2 text-sm text-muted transition
+      hover:bg-panel2 hover:text-ink focus-visible:outline-offset-[-2px];
+  }
+
+  .rail-link-active {
+    @apply border-accent bg-panel2 text-ink;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-panel2;
+  }
+
+  .kbd {
+    @apply border border-line bg-panel2 px-1.5 py-0.5 font-mono text-[10px] text-muted;
+  }
+
+  .hairline {
+    @apply border-line;
+  }
+
+  .link-quiet {
+    @apply text-muted underline decoration-line-strong underline-offset-4 transition hover:text-ink hover:decoration-accent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .panel,
+  .card {
+    border-color: #ccc !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: '';
+  }
+}

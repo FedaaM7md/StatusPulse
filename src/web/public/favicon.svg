@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="StatusPulse">
+  <rect width="48" height="48" fill="#0B0F14" />
+  <path d="M15 9H9v30h6M33 9h6v30h-6" fill="none" stroke="#4CC9F0" stroke-width="2.6" stroke-linecap="square" />
+  <path d="M13 25h6l3-8 5 15 3-7h5" fill="none" stroke="#D7E0EA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="35" cy="25" r="2.2" fill="#3DDC84" />
+</svg>
